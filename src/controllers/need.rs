@@ -17,14 +17,13 @@ use crate::{
 pub struct Params {
     pub title: String,
     pub value: i16,
-    pub user_id: i32,
 }
-
+const DUMMY_USER_ID: i32 = 1;
 impl Params {
     fn update(&self, item: &mut ActiveModel) {
         item.title = Set(self.title.clone());
         item.value = Set(self.value);
-        item.user_id = Set(self.user_id);
+        item.user_id = Set(DUMMY_USER_ID);
     }
 }
 

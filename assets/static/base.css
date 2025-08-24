@@ -1,0 +1,42 @@
+input[type=range][orient=vertical] {
+    writing-mode: vertical-lr;
+    direction: rtl;
+    appearance: slider-vertical;
+    accent-color: green;
+    overflow: hidden;
+    width: 10px;
+    -webkit-appearance: none;
+    background-color: yellow;
+    margin: auto;
+    display: block;
+
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: red;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    height: 10px;
+    cursor: ew-resize;
+    background: #434343;
+    box-shadow: -30px 0px 40px 60px #ffcc00, -30px 60px 0 60px #06ff3c;
+}
+
+
+
+.needs-form>* {
+    margin: auto;
+    display: block;
+}
+
+.needs-form {
+    display: block;
+    width: 150px;
+}
+
+label {
+    display: none;
+}
