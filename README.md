@@ -48,11 +48,30 @@ compilation: debug
 listening on http://localhost:5150
 ```
 
-## Full Stack Serving
+## Start postgresql
+```
+docker run -d -p 5432:5432 \
+  -e POSTGRES_USER=loco \
+  -e POSTGRES_DB=needs_development \
+  -e POSTGRES_PASSWORD="loco" \
+  postgres:15.3-alpine
+```
 
-You can check your [configuration](config/development.yaml) to pick either frontend setup or server-side rendered template, and activate the relevant configuration sections.
+## Features so far
+* list of needs at http://localhost:5150/needs
+* create, edit, update and delete needs
+* using htmx
 
-
-## Getting help
-
-Check out [a quick tour](https://loco.rs/docs/getting-started/tour/) or [the complete guide](https://loco.rs/docs/getting-started/guide/).
+## TODO
+* authentication
+  * you always work with your own user id
+  * login page
+  * pass BEARER token automatically via HTMX extension
+    * https://htmx.org/examples/async-auth/
+* deploy
+  * anywhere in the web
+  * CI
+* future fancy features
+  * make it look ok
+  * see other users' needs
+  * show when last updated
