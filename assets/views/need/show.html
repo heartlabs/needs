@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+View need: {{ item.id }}
+{% endblock title %}
+
+{% block page_title %}
+View need: {{ item.id }}
+{% endblock page_title %}
+
+
+{% block content %}
+<div class="mb-10">
+    <div>
+    <label><b>{{"title" | capitalize }}:</b> {{item.title}}</label>
+    </div>
+<div>
+    <label><b>{{"value" | capitalize }}:</b> {{item.value}}</label>
+    </div>
+<div>
+    <label><b>{{"user_id" | capitalize }}:</b> {{item.user_id}}</label>
+    </div>
+<br />
+<a href="/needs">Back to needs</a>
+</div>
+{% endblock content %}

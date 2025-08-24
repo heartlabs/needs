@@ -37,6 +37,12 @@ input[type='range']::-webkit-slider-thumb {
     width: 150px;
 }
 
+.needs-list {
+    display: flex;
+    width: 99vw;
+    flex-wrap: wrap;
+}
+
 label {
     display: none;
 }

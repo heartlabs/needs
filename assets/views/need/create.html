@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create need
+{% endblock title %}
+
+{% block page_title %}
+Create new need
+{% endblock page_title %}
+
+{% block content %}
+<div class="mb-10">
+    <div id="error-message" class="mt-4 text-sm text-red-600"></div>
+    <form hx-post="/needs" hx-ext="submitjson" hx-trigger="change" class="needs-form">
+
+        <div class="value-input">
+            <label>value</label>
+            <input type="range" orient="vertical" min="0" max="100" id="value" name="value" type="number" value="50"
+                step="1" />
+        </div>
+        <div class="title-input">
+            <label>title</label>
+            <input id="title" name="title" type="text" value="" />
+        </div>
+    </form>
+</div>
+{% endblock content %}
+
+{% block js %}
+
+{% endblock js %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit need: {{ item.id }}
+{% endblock title %}
+
+{% block page_title %}
+Edit need: {{ item.id }}
+{% endblock page_title %}
+
+{% block content %}
+<div class="mb-10">
+    <div id="error-message" class="mt-4 text-sm text-red-600"></div>
+    {% include "need/edit_one.html" %}
+    <br />
+    <a href="/needs">Back to need</a>
+</div>
+{% endblock content %}
+
+{% block js %}
+
+{% endblock js %}
