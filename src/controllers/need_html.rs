@@ -41,7 +41,7 @@ pub async fn list(
         .order_by(Column::Id, Order::Desc)
         .all(&ctx.db)
         .await?;
-    views::need::list(&v, &item)
+    views::need_html::list(&v, &item)
 }
 
 #[debug_handler]
@@ -49,7 +49,7 @@ pub async fn new(
     ViewEngine(v): ViewEngine<TeraView>,
     State(_ctx): State<AppContext>,
 ) -> Result<Response> {
-    views::need::create(&v)
+    views::need_html::create(&v)
 }
 
 #[debug_handler]
@@ -72,7 +72,7 @@ pub async fn edit(
     State(ctx): State<AppContext>,
 ) -> Result<Response> {
     let item = load_item(&ctx, id).await?;
-    views::need::edit(&v, &item)
+    views::need_html::edit(&v, &item)
 }
 
 #[debug_handler]
@@ -82,7 +82,7 @@ pub async fn show(
     State(ctx): State<AppContext>,
 ) -> Result<Response> {
     let item = load_item(&ctx, id).await?;
-    views::need::show(&v, &item)
+    views::need_html::show(&v, &item)
 }
 
 #[debug_handler]
@@ -103,7 +103,7 @@ pub async fn remove(Path(id): Path<i32>, State(ctx): State<AppContext>) -> Resul
 
 pub fn routes() -> Routes {
     Routes::new()
-        .prefix("needs/")
+        .prefix("needs_html/")
         .add("/", get(list))
         .add("/", post(add))
         .add("new", get(new))
