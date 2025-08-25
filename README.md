@@ -61,6 +61,8 @@ docker run -d -p 5432:5432 \
 ```
 docker buildx build --platform linux/amd64 --output ./TMP .
 scp TMP/usr/app/needs-cli  root@v2202204174441188151.happysrv.de:/home/server/needs/
+scp -r config  root@v2202204174441188151.happysrv.de:/home/server/needs/
+scp -r assets  root@v2202204174441188151.happysrv.de:/home/server/needs/
 ```
 
 ## Features so far
