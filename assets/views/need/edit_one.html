@@ -1,4 +1,5 @@
-<form hx-put="/needs/{{ item.id }}" hx-ext="submitjson" hx-swap="outerHTML" hx-trigger="change" class="needs-form">
+<form hx-put="/needs/{{ item.id }}" hx-ext="submitjson" hx-swap="outerHTML" hx-trigger="change" class="needs-form"
+    id="need-{{ item.id }}">
 
     <div class="value-input">
         <label>value</label>
@@ -12,7 +13,7 @@
     <div>
         <div class="mt-5">
             <button class="text-xs py-3 px-6 rounded-lg bg-red-600 text-white"
-                onclick="confirmDelete(event, '/needs/{{ item.id }}', '/needs' )">Delete</button>
+                onclick="confirmDelete(event, '/needs/{{ item.id }}', '{{ item.id }}' )">Delete</button>
         </div>
     </div>
 </form>
