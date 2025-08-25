@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<h1>Login Page</h1>
+
+<a href="/needs" hx-ext="submitjson" hx-boost="true">
+    List Needs
+</a>
+
+<script>
+    const data = JSON.stringify({
+        'email': 'user@loco.rs',
+        'password': '12341234'
+    });
+
+    let xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.open('POST', 'http://127.0.0.1:5150/api/auth/login');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onload = function () {
+        console.log(xhr.response);
+        let response = JSON.parse(xhr.response);
+        let user_apikey = response.token;
+        window.localStorage.setItem("USER_APIKEY", user_apikey)
+    };
+
+    xhr.send(data);
+</script>
+{% endblock content %}

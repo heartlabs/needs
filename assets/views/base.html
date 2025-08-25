@@ -33,10 +33,14 @@
     {% endblock js %}
 
     <script>
+
         htmx.defineExtension('submitjson', {
             onEvent: function (name, evt) {
+                let user_apikey = window.localStorage.getItem("USER_APIKEY")
+
                 if (name === "htmx:configRequest") {
                     evt.detail.headers['Content-Type'] = "application/json"
+                    evt.detail.headers['Authorization'] = "Bearer " + user_apikey;
                 }
             },
             encodeParameters: function (xhr, parameters, elt) {

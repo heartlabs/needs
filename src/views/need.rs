@@ -40,3 +40,6 @@ pub fn edit(v: &impl ViewRenderer, item: &needs::Model) -> Result<Response> {
 pub fn edit_one(v: &impl ViewRenderer, item: &needs::Model) -> Result<Response> {
     format::render().view(v, "need/edit_one.html", data!({"item": item}))
 }
+pub fn login(v: &impl ViewRenderer) -> Result<Response> {
+    format::render().view(v, "need/login.html", data!({}))
+}
