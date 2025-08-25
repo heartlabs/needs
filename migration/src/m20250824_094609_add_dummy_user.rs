@@ -15,7 +15,7 @@ impl MigrationTrait for Migration {
         Ok(())
     }
 
-    async fn down(&self, m: &SchemaManager) -> Result<(), DbErr> {
+    async fn down(&self, _m: &SchemaManager) -> Result<(), DbErr> {
         Ok(())
     }
 }
