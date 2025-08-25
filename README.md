@@ -57,12 +57,16 @@ docker run -d -p 5432:5432 \
   postgres:15.3-alpine
 ```
 
+## Deploy
+```
+docker buildx build --platform linux/amd64 --output ./TMP .
+scp TMP/usr/app/needs-cli  root@v2202204174441188151.happysrv.de:/home/server/needs/
+```
+
 ## Features so far
 * list of needs at http://localhost:5150/needs
 * create, edit, update and delete needs
 * using htmx
-
-## TODO
 * authentication
   * you always work with your own user id
   * login page

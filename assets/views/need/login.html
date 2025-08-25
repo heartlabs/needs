@@ -26,7 +26,7 @@
 
         let xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
-        xhr.open('POST', 'http://127.0.0.1:5150/api/auth/login');
+        xhr.open('POST', '/api/auth/login');
         xhr.setRequestHeader('Content-Type', 'application/json');
 
         xhr.onload = function () {
