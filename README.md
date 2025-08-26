@@ -63,6 +63,16 @@ docker buildx build --platform linux/amd64 --output ./TMP .
 scp TMP/usr/app/needs-cli  root@v2202204174441188151.happysrv.de:/home/server/needs/
 scp -r config  root@v2202204174441188151.happysrv.de:/home/server/needs/
 scp -r assets  root@v2202204174441188151.happysrv.de:/home/server/needs/
+scp -r dockerfile  root@v2202204174441188151.happysrv.de:/home/server/needs/
+scp -r docker-compose.yaml  root@v2202204174441188151.happysrv.de:/home/server/needs/
+
+```
+
+Then on the server
+```
+docker compose build
+docker compose down
+docker compose up -d
 ```
 
 ## Features so far
@@ -76,8 +86,15 @@ scp -r assets  root@v2202204174441188151.happysrv.de:/home/server/needs/
     * https://htmx.org/examples/async-auth/
 * deploy
   * anywhere in the web
-  * CI
+  * dockerize to make sure it runs always
 * future fancy features
   * make it look ok
+  * improve login UX
+    * one wrapper page that can be accessed w/o login
+    * if logged out show login
+    * otherwise show needs list
+  * deploy
+    * CI
+    * domain w/o port
   * see other users' needs
   * show when last updated
