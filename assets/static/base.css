@@ -1,14 +1,48 @@
+body {
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+nav {
+
+    background: #f1d8fb;
+    display: inline-flex;
+    flex-direction: column;
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+nav a {
+    display: block;
+    color: #55114f;
+    border: 1px solid #791a71;
+    text-decoration: none;
+    padding: 10px;
+    margin-bottom: -1px;
+}
+
+nav a:hover {
+    background-color: #f3e7f8;
+    color: #791a71;
+}
+
+.content {
+    display: flex;
+    margin: 10px;
+}
+
+
 input[type=range][orient=vertical] {
     writing-mode: vertical-lr;
     direction: rtl;
     appearance: slider-vertical;
     accent-color: green;
     overflow: hidden;
-    width: 10px;
+    width: 20px;
     -webkit-appearance: none;
     background-color: yellow;
     margin: auto;
     display: block;
+    border-radius: 15px;
 
 }
 
@@ -17,15 +51,32 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 input[type='range']::-webkit-slider-thumb {
-    width: 10px;
+    width: 20px;
     -webkit-appearance: none;
-    height: 10px;
-    cursor: ew-resize;
-    background: #434343;
+    height: 20px;
+    cursor: ns-resize;
+    background: #791a71;
     box-shadow: -30px 0px 40px 60px #ffcc00, -30px 60px 0 60px #06ff3c;
 }
 
+input[type='range']::-webkit-slider-thumb:hover {
+    background: #de75d5;
+}
 
+.delete-button {
+    position: absolute;
+    top: -7px;
+    right: 10px;
+    font-size: 30px;
+    background: transparent;
+    border: none;
+    color: #791a71;
+    text-decoration: none;
+}
+
+.delete-button:hover {
+    color: #de75d5;
+}
 
 .needs-form>* {
     margin: auto;
@@ -34,13 +85,40 @@ input[type='range']::-webkit-slider-thumb {
 
 .needs-form {
     display: block;
-    width: 150px;
+    position: relative;
 }
 
 .needs-list {
     display: flex;
-    width: 99vw;
     flex-wrap: wrap;
+}
+
+.needs-list input[type="text"] {
+    border-color: #791a71;
+    color: #55114f;
+    background-color: #f1d8fb;
+    border-radius: 15px;
+    text-align: center;
+    margin: 5px;
+}
+
+.needs-list input[type="text"]:hover,
+.needs-list input[type="text"]:focus {
+    background-color: #f3e7f8;
+    color: #791a71;
+}
+
+.new-need-button {
+    background: transparent;
+    border: 1px dashed #de75d5;
+    padding: 10px;
+    font-size: 100px;
+    color: #791a71;
+}
+
+.new-need-button:hover {
+    color: #de75d5;
+    cursor: pointer;
 }
 
 label {

@@ -1,5 +1,8 @@
 <div class="needs-list">
-
+    <button hx-post="/needs/components/new" hx-ext="submitjson" hx-swap="beforeend" hx-target="#main .needs-list"
+        class="new-need-button">
+        +
+    </button>
     {% if items %}
 
 
@@ -9,6 +12,3 @@
 
     {% endif %}
 </div>
-<button hx-post="/needs/components/new" hx-ext="submitjson" hx-swap="beforeend" hx-target="#main .needs-list">
-    Create
-</button>

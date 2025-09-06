@@ -5,20 +5,20 @@ Your Needs
 {% endblock title %}
 
 {% block page_title %}
-Home
+Your Needs
 {% endblock page_title %}
 
 {% block content %}
+<div class="content">
+    <nav hx-ext="submitjson">
+        <a href="/needs/components/login" hx-push-url="/needs/login" hx-boost="true" hx-target="#main"
+            id="login-link">login</a>
+        <a href="/needs/components/list" hx-push-url="/needs/list" hx-boost="true" hx-target="#main" id="list-link">list
+            needs</a>
+    </nav>
+    <main id="main" hx-get="/needs/components/{{ path }}" hx-trigger="load" hx-ext="submitjson">
 
-<nav hx-ext="submitjson">
-    <a href="/needs/components/login" hx-push-url="/needs/login" hx-boost="true" hx-target="#main"
-        id="login-link">login</a>
-    <a href="/needs/components/list" hx-push-url="/needs/list" hx-boost="true" hx-target="#main" id="list-link">list
-        needs</a>
-</nav>
-<main id="main" hx-get="/needs/components/{{ path }}" hx-trigger="load" hx-ext="submitjson">
-
-</main>
-
+    </main>
+</div>
 
 {% endblock content %}

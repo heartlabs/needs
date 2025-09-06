@@ -10,10 +10,8 @@
         <label>title</label>
         <input id="title" name="title" type="text" value="{{item.title}}" />
     </div>
-    <div>
-        <div class="mt-5">
-            <button class="text-xs py-3 px-6 rounded-lg bg-red-600 text-white"
-                onclick="confirmDelete(event, '/needs/components/{{ item.id }}', '{{ item.id }}' )">Delete</button>
-        </div>
-    </div>
+
+    <a href="" class="delete-button"
+        onclick="confirmDelete(event, '/needs/components/{{ item.id }}', '{{ item.id }}' )">✖</a>
+
 </form>
