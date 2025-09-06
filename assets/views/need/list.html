@@ -1,14 +1,3 @@
-{% extends "base.html" %}
-
-{% block title %}
-List of need
-{% endblock title %}
-
-{% block page_title %}
-need
-{% endblock page_title %}
-
-{% block content %}
 <div class="needs-list">
 
     {% if items %}
@@ -19,9 +8,7 @@ need
     {% endfor %}
 
     {% endif %}
-    <a hx-post="/needs/new" hx-ext="submitjson" hx-swap="beforebegin">
-        Create
-    </a>
-
 </div>
-{% endblock content %}
+<button hx-post="/needs/components/new" hx-ext="submitjson" hx-swap="beforeend" hx-target="#main .needs-list">
+    Create
+</button>

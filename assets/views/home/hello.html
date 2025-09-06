@@ -1,12 +1,24 @@
-<html><body>
-  <img src="/static/image.png" width="200"/>
-  <br/>
-  find this tera template at <code>assets/views/home/hello.html</code>: 
-  <br/>
-  <br/>
-  {{ t(key="hello-world", lang="en-US") }}, 
-  <br/>
-  {{ t(key="hello-world", lang="de-DE") }}
-  
-</body></html>
-  
+{% extends "base.html" %}
+
+{% block title %}
+Your Needs
+{% endblock title %}
+
+{% block page_title %}
+Home
+{% endblock page_title %}
+
+{% block content %}
+
+<nav hx-ext="submitjson">
+    <a href="/needs/components/login" hx-push-url="/needs/login" hx-boost="true" hx-target="#main"
+        id="login-link">login</a>
+    <a href="/needs/components/list" hx-push-url="/needs/list" hx-boost="true" hx-target="#main" id="list-link">list
+        needs</a>
+</nav>
+<main id="main" hx-get="/needs/components/{{ path }}" hx-trigger="load" hx-ext="submitjson">
+
+</main>
+
+
+{% endblock content %}
