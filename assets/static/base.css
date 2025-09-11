@@ -2,11 +2,15 @@ body {
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+main {
+    flex-grow: 1;
+}
+
 nav {
 
     background: #f1d8fb;
     display: inline-flex;
-    flex-direction: column;
+    flex-direction: row;
     white-space: nowrap;
     margin-right: 10px;
 }
@@ -17,7 +21,7 @@ nav a {
     border: 1px solid #791a71;
     text-decoration: none;
     padding: 10px;
-    margin-bottom: -1px;
+    margin-right: -1px;
 }
 
 nav a:hover {
@@ -27,6 +31,7 @@ nav a:hover {
 
 .content {
     display: flex;
+    flex-direction: column;
     margin: 10px;
 }
 
@@ -86,11 +91,18 @@ input[type='range']::-webkit-slider-thumb:hover {
 .needs-form {
     display: block;
     position: relative;
+    margin: auto;
+    width: fit-content;
+}
+
+.needs-cell {
+    display: flex;
 }
 
 .needs-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 1fr;
 }
 
 .needs-list input[type="text"] {
@@ -109,11 +121,16 @@ input[type='range']::-webkit-slider-thumb:hover {
 }
 
 .new-need-button {
+    display: block;
+    margin: auto;
     background: transparent;
     border: 1px dashed #de75d5;
     padding: 10px;
     font-size: 100px;
     color: #791a71;
+    height: 100%;
+    aspect-ratio: 5 / 6;
+    line-height: 75px;
 }
 
 .new-need-button:hover {
@@ -131,4 +148,32 @@ label {
 
 #next.loggedIn {
     display: inline;
+}
+
+@media (min-width:450px) {
+
+    /* anything larger than a phone in portrait mode */
+    nav {
+        flex-direction: column;
+        margin-bottom: 0px;
+    }
+
+    nav a {
+        margin-bottom: -1px;
+        margin-right: 0;
+    }
+
+    .content {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .needs-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .new-need-button {
+        flex-grow: initial;
+    }
 }

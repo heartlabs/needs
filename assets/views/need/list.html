@@ -1,14 +1,17 @@
 <div class="needs-list">
-    <button hx-post="/needs/components/new" hx-ext="submitjson" hx-swap="beforeend" hx-target="#main .needs-list"
-        class="new-need-button">
-        +
-    </button>
+
     {% if items %}
 
 
     {% for item in items %}
+
     {% include "need/edit_one.html" %}
     {% endfor %}
 
     {% endif %}
+    <div class="need-cell" hx-target="this">
+        <button hx-post="/needs/components/new" hx-ext="submitjson" hx-swap="beforebegin" class="new-need-button">
+            +
+        </button>
+    </div>
 </div>
