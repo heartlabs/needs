@@ -119,14 +119,24 @@ jobs:
         with:
           command: build
           args: --release
-      - name: copy application files via ssh
+      - name: copy static application files via ssh
         uses: appleboy/scp-action@master
         with:
           host: v2202204174441188151.happysrv.de
           username: ${{ secrets.DEPLOY_USER }}
           password: ${{ secrets.DEPLOY_USER_PASSWORD }}
-          source: "config,assets,target/release/needs-cli"
+          source: "config,assets"
           target: "/home/server/needs/"
+      - name: copy executable via ssh
+        uses: appleboy/scp-action@master
+        with:
+          host: v2202204174441188151.happysrv.de
+          username: ${{ secrets.DEPLOY_USER }}
+          password: ${{ secrets.DEPLOY_USER_PASSWORD }}
+          source: "target/release/needs-cli"
+          target: "/home/server/needs/"
+          strip_components: 2
+          
       - name: copy docker-compose files via ssh
         uses: appleboy/scp-action@master
         with:
