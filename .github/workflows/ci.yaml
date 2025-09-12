@@ -141,4 +141,4 @@ jobs:
           host: v2202204174441188151.happysrv.de
           username: ${{ secrets.DEPLOY_USER }}
           password: ${{ secrets.DEPLOY_USER_PASSWORD }}
-          script: cd /home/server/needs && docker compose pull && docker compose up -d --remove-orphans --force-recreate        
+          script: cd /home/server/needs && docker compose pull && docker compose build && docker compose up -d --remove-orphans --force-recreate        
