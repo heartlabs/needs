@@ -11,6 +11,8 @@ services:
       POSTGRES_DB: needs_development
     ports:
       - "5432:5432"
+    networks:
+      - needsnet
     volumes:
       # persistent data
       - db_data:/var/lib/postgresql/data
@@ -32,6 +34,13 @@ services:
         condition: service_healthy
     ports:
       - "5150:5150"
+    networks:
+      - needsnet
 
 volumes:
   db_data:
+
+
+networks:
+  needsnet:
+    name: needs_network
