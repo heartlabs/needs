@@ -99,4 +99,46 @@ jobs:
         env:
           REDIS_URL: redis://localhost:${{job.services.redis.ports[6379]}}
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres_test
-          
+  deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    environment: heartlabs.tech
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
+      - name: Setup Rust cache
+        uses: Swatinem/rust-cache@v2
+      - name: Build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release
+      - name: copy application files via ssh
+        uses: appleboy/scp-action@master
+        with:
+          host: v2202204174441188151.happysrv.de
+          username: ${{ secrets.DEPLOY_USER }}
+          password: ${{ secrets.DEPLOY_USER_PASSWORD }}
+          source: "config,assets,target/release/needs-cli"
+          target: "/home/server/needs/"
+      - name: copy docker-compose files via ssh
+        uses: appleboy/scp-action@master
+        with:
+          host: v2202204174441188151.happysrv.de
+          username: ${{ secrets.DEPLOY_USER }}
+          password: ${{ secrets.DEPLOY_USER_PASSWORD }}
+          source: "docker*"
+          target: "/home/server/needs/"
+      - name: restart docker compose
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: v2202204174441188151.happysrv.de
+          username: ${{ secrets.DEPLOY_USER }}
+          password: ${{ secrets.DEPLOY_USER_PASSWORD }}
+          script: cd /home/server/needs && docker compose pull && docker compose up -d --remove-orphans --force-recreate        
