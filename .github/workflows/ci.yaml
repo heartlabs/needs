@@ -101,7 +101,7 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres_test
   deploy:
     name: Build and Deploy
-    runs-on: ubuntu-latest
+    runs-on: debian:bookworm-slim
     environment: heartlabs.tech
     permissions:
       contents: read
