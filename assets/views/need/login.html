@@ -6,7 +6,7 @@
     <button id="login-button" onclick="login()">Login</button>
 </div>
 
-<a href="/needs" hx-ext="submitjson" hx-boost="true" id="next">
+<a href="/needs/list" hx-ext="submitjson" hx-boost="true" id="next">
     List Needs
 </a>
 
@@ -27,11 +27,17 @@
         xhr.onload = function () {
             console.log(xhr.response);
             let response = JSON.parse(xhr.response);
+
+            if (!response || !response.token) {
+                console.error("Login failed");
+                return;
+            }
+
             let user_apikey = response.token;
             window.localStorage.setItem("USER_APIKEY", user_apikey);
 
             htmx.addClass(htmx.find('#next'), 'loggedIn');
-            //document.getElementById('next').click();
+            document.getElementById('next').click();
         };
 
         xhr.send(data);

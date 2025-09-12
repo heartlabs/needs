@@ -110,9 +110,17 @@
         });
 
         document.body.addEventListener('htmx:responseError', function (event) {
+
             const target = document.querySelector('#error-message');
             const errorResponse = event.detail.xhr.response;
-            target.innerHTML = errorResponse
+            if (target) {
+                target.innerHTML = errorResponse;
+            }
+            console.error({ errorResponse });
+
+            if (event.detail.xhr.status == 401) {
+                window.location.href = "/needs/login";
+            }
         });
     </script>
 </body>
