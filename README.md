@@ -44,13 +44,7 @@ docker compose up -d
 * deploy
   * anywhere in the web
   * dockerize to make sure it runs always
+  * CI
 * future fancy features
-  * improve login UX
-    * one wrapper page that can be accessed w/o login
-    * if logged out show login
-    * otherwise show needs list
-  * deploy
-    * CI
-    * domain w/o port
   * see other users' needs
   * show when last updated
