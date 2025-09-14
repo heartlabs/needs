@@ -14,5 +14,10 @@
       "type": "image/png",
       "sizes": "512x512"
     }
+  ],
+  "id": "eu.heartlabs.needs",
+  "description": "Reflect on and communicate your needs",
+  "categories": [
+    "health"
   ]
 }
