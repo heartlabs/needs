@@ -1,4 +1,4 @@
-<div class="need-cell" id="need-{{ item.id }}">
+<div class="need-cell" id="need-{{ item.id }}" hx-target="this">
     <form hx-put="/needs/components/{{ item.id }}" hx-ext="submitjson" hx-swap="outerHTML" hx-trigger="change"
         class="needs-form">
 
