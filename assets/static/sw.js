@@ -22,6 +22,10 @@ self.addEventListener('install', async (event) => {
   );
 });
 
+self.addEventListener("activate", (event) => {
+  event.waitUntil(clients.claim());
+});
+
 if (workbox.navigationPreload.isSupported()) {
   workbox.navigationPreload.enable();
 }
