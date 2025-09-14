@@ -35,19 +35,20 @@ nav a:hover {
     margin: 10px;
 }
 
-
+/***** Sliders ******/
 input[type=range][orient=vertical] {
-    writing-mode: vertical-lr;
     direction: rtl;
     appearance: slider-vertical;
     accent-color: green;
     overflow: hidden;
-    width: 20px;
-    -webkit-appearance: none;
+    height: 20px;
+    appearance: none;
     background-color: yellow;
     margin: auto;
     display: block;
     border-radius: 15px;
+    transform: rotate(90deg);
+    transform-origin: 8% 50%;
 
 }
 
@@ -61,13 +62,19 @@ input[type='range']::-webkit-slider-thumb {
     height: 20px;
     cursor: ns-resize;
     background: #791a71;
-    box-shadow: -30px 0px 40px 60px #ffcc00, -30px 60px 0 60px #06ff3c;
+    box-shadow: 0px -30px 40px 60px #ffcc00, 60px -30px 0 60px #06ff3c;
 }
 
 input[type='range']::-webkit-slider-thumb:hover {
     background: #de75d5;
 }
 
+.value-input {
+    width: 20px;
+    height: 129px;
+}
+
+/***** Other input ******/
 .delete-button {
     position: absolute;
     top: -7px;
@@ -95,16 +102,6 @@ input[type='range']::-webkit-slider-thumb:hover {
     width: fit-content;
 }
 
-.needs-cell {
-    display: flex;
-}
-
-.needs-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    grid-auto-rows: 1fr;
-}
-
 .needs-list input[type="text"] {
     border-color: #791a71;
     color: #55114f;
@@ -118,6 +115,18 @@ input[type='range']::-webkit-slider-thumb:hover {
 .needs-list input[type="text"]:focus {
     background-color: #f3e7f8;
     color: #791a71;
+}
+
+/***** List Item ******/
+
+.needs-cell {
+    display: flex;
+}
+
+.needs-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-auto-rows: 1fr;
 }
 
 .new-need-button {
