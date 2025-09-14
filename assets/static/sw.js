@@ -7,12 +7,15 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox
 const offlineFallbackPage = "/static/offline.html";
 
 self.addEventListener("message", (event) => {
+  console.log("SW Message received")
   if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
 });
 
 self.addEventListener('install', async (event) => {
+  console.log("SW install received")
+
   event.waitUntil(
     caches.open(CACHE)
       .then((cache) => cache.add(offlineFallbackPage))
@@ -24,13 +27,15 @@ if (workbox.navigationPreload.isSupported()) {
 }
 
 workbox.routing.registerRoute(
-  new RegExp('/*'),
+  new RegExp('/.*'),
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: CACHE
   })
 );
 
 self.addEventListener('fetch', (event) => {
+  console.log("SW fetch received")
+
   if (event.request.mode === 'navigate') {
     event.respondWith((async () => {
       try {

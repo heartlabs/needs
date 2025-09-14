@@ -126,7 +126,7 @@
     </script>
     <script>
         if (typeof navigator.serviceWorker !== 'undefined') {
-            navigator.serviceWorker.register('/static/sw.js')
+            navigator.serviceWorker.register('/static/sw.js', { scope: "/" })
         }
     </script>
 </body>
