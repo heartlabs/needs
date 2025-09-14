@@ -36,11 +36,12 @@ nav a:hover {
 }
 
 /***** Sliders ******/
-input[type=range][orient=vertical] {
+input[type=range] {
     direction: rtl;
     appearance: slider-vertical;
     accent-color: green;
     overflow: hidden;
+    width: 129px;
     height: 20px;
     appearance: none;
     background-color: yellow;
