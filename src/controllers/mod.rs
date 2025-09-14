@@ -23,6 +23,10 @@ pub async fn service_worker() -> Result<impl IntoResponse> {
     };
     let mut headers = HeaderMap::new();
     headers.insert("Service-Worker-Allowed", "/".parse().unwrap());
+    headers.insert(
+        header::CONTENT_TYPE,
+        "text/javascript; charset=utf-8".parse().unwrap(),
+    );
 
     let stream = ReaderStream::new(file);
     let body = Body::from_stream(stream);
