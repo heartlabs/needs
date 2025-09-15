@@ -2,5 +2,6 @@
 
 pub mod prelude;
 
+pub mod invites;
 pub mod needs;
 pub mod users;

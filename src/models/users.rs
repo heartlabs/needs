@@ -1,9 +1,13 @@
 use async_trait::async_trait;
 use chrono::{offset::Local, Duration};
-use loco_rs::{auth::jwt, hash, prelude::*};
+use loco_rs::{auth::jwt, hash, prelude::*, validation::ModelValidationErrors};
 use serde::{Deserialize, Serialize};
 use serde_json::Map;
+use tracing::info;
 use uuid::Uuid;
+use validator::ValidationErrors;
+
+use crate::models::_entities::invites;
 
 pub use super::_entities::users::{self, ActiveModel, Entity, Model};
 
@@ -21,6 +25,7 @@ pub struct RegisterParams {
     pub email: String,
     pub password: String,
     pub name: String,
+    pub invite_token: String,
 }
 
 #[derive(Debug, Validate, Deserialize)]
@@ -225,6 +230,20 @@ impl Model {
     ) -> ModelResult<Self> {
         let txn = db.begin().await?;
 
+        let invite = invites::Entity::find()
+            .filter(
+                model::query::condition()
+                    .eq(invites::Column::Token, &params.invite_token)
+                    .build(),
+            )
+            .one(&txn)
+            .await?
+            .ok_or(ModelError::Message("Invite token not valid".to_string()))?;
+
+        if invite.used_by.is_some() {
+            return Err(ModelError::Message("Invite token already used".to_string()));
+        }
+
         if users::Entity::find()
             .filter(
                 model::query::condition()
@@ -240,6 +259,7 @@ impl Model {
 
         let password_hash =
             hash::hash_password(&params.password).map_err(|e| ModelError::Any(e.into()))?;
+
         let user = users::ActiveModel {
             email: ActiveValue::set(params.email.to_string()),
             password: ActiveValue::set(password_hash),
@@ -249,6 +269,9 @@ impl Model {
         .insert(&txn)
         .await?;
 
+        let mut active_model = invite.into_active_model();
+        active_model.used_by = Set(Some(user.id));
+        active_model.update(&txn).await?;
         txn.commit().await?;
 
         Ok(user)

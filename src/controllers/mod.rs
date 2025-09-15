@@ -37,3 +37,5 @@ pub async fn service_worker() -> Result<impl IntoResponse> {
 pub fn routes() -> Routes {
     Routes::new().add("/static/sw.js", get(service_worker))
 }
+
+pub mod invite;
