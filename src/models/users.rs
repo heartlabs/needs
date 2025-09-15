@@ -1,11 +1,9 @@
 use async_trait::async_trait;
 use chrono::{offset::Local, Duration};
-use loco_rs::{auth::jwt, hash, prelude::*, validation::ModelValidationErrors};
+use loco_rs::{auth::jwt, hash, prelude::*};
 use serde::{Deserialize, Serialize};
 use serde_json::Map;
-use tracing::info;
 use uuid::Uuid;
-use validator::ValidationErrors;
 
 use crate::models::_entities::invites;
 

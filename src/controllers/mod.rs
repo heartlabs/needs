@@ -3,7 +3,7 @@ use std::{fs, path::PathBuf};
 use axum::{
     body::Body,
     debug_handler,
-    http::{header, HeaderMap, StatusCode},
+    http::{header, HeaderMap},
 };
 use loco_rs::prelude::*;
 use tokio_util::io::ReaderStream;
