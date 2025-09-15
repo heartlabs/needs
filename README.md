@@ -45,6 +45,12 @@ docker compose up -d
   * anywhere in the web
   * dockerize to make sure it runs always
   * CI
+  * progressive webapp
 * future fancy features
+  * user creation interface
   * see other users' needs
   * show when last updated
+  * Install instructions
+  * Introduction page / doc / tutorial
+  * Make event-sourced
+  * Add tests (FE and BE)
