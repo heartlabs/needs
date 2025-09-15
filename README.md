@@ -47,9 +47,11 @@ docker compose up -d
   * CI
   * progressive webapp
 * future fancy features
-  * user creation interface
+  * Nicer login page
+  * Feelings
   * see other users' needs
   * show when last updated
+  * user creation interface
   * Install instructions
   * Introduction page / doc / tutorial
   * Make event-sourced
