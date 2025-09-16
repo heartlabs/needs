@@ -1,0 +1,19 @@
+<div class="need-cell" id="feeling-{{ item.id }}" hx-target="this">
+    <form hx-put="/feelings/components/{{ item.id }}" hx-ext="submitjson" hx-swap="outerHTML" hx-trigger="change"
+        class="needs-form">
+
+        <div class="value-input">
+            <label>value</label>
+            <input type="range" min="0" max="100" id="value" name="value" type="number" value="{{item.value}}"
+                step="1" />
+        </div>
+        <div class="title-input">
+            <label>title</label>
+            <input id="title" name="title" type="text" value="{{item.title}}" />
+        </div>
+
+        <a href="" class="delete-button"
+            onclick="confirmDelete(event, '/feelings/components/{{ item.id }}', '{{ item.id }}' )">✖</a>
+
+    </form>
+</div>

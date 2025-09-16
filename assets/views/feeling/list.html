@@ -1,0 +1,17 @@
+<div class="needs-list">
+
+    {% if items %}
+
+
+    {% for item in items %}
+
+    {% include "feeling/edit_one.html" %}
+    {% endfor %}
+
+    {% endif %}
+    <div class="need-cell" hx-target="this">
+        <button hx-post="/feelings/components/new" hx-ext="submitjson" hx-swap="beforebegin" class="new-need-button">
+            +
+        </button>
+    </div>
+</div>

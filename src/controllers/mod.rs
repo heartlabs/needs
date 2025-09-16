@@ -9,6 +9,9 @@ use loco_rs::prelude::*;
 use tokio_util::io::ReaderStream;
 
 pub mod auth;
+pub mod feeling;
+pub mod feeling_components;
+pub mod invite;
 pub mod need;
 pub mod need_components;
 
@@ -37,5 +40,3 @@ pub async fn service_worker() -> Result<impl IntoResponse> {
 pub fn routes() -> Routes {
     Routes::new().add("/static/sw.js", get(service_worker))
 }
-
-pub mod invite;
