@@ -43,7 +43,3 @@ pub fn edit_one(v: &impl ViewRenderer, item: &needs::Model) -> Result<Response> 
 pub fn login(v: &impl ViewRenderer) -> Result<Response> {
     format::render().view(v, "need/login.html", data!({}))
 }
-
-pub fn home(v: impl ViewRenderer, path: String) -> Result<impl IntoResponse> {
-    format::render().view(&v, "home/hello.html", data!({ "path" : path}))
-}

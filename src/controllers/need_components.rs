@@ -121,13 +121,6 @@ pub async fn remove(
     format::empty()
 }
 
-pub async fn render_home(
-    ViewEngine(v): ViewEngine<TeraView>,
-    Path(path): Path<String>,
-) -> Result<impl IntoResponse> {
-    views::need::home(v, path)
-}
-
 pub fn routes() -> Routes {
     Routes::new()
         .prefix("needs/components/")

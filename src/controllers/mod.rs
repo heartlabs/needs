@@ -8,11 +8,11 @@ use axum::{
 use loco_rs::prelude::*;
 use tokio_util::io::ReaderStream;
 
+pub mod app;
 pub mod auth;
 pub mod feeling;
 pub mod feeling_components;
 pub mod invite;
-pub mod need;
 pub mod need_components;
 
 #[debug_handler]

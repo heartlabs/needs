@@ -9,14 +9,14 @@ use crate::views;
 #[debug_handler]
 pub async fn render_home(
     ViewEngine(v): ViewEngine<TeraView>,
-    Path(path): Path<String>,
+    Path(paths): Path<String>,
 ) -> Result<impl IntoResponse> {
     // if headers.get("Hx-Boosted").is_some() {}
-    views::need::home(v, path)
+    views::app(v, paths.split("/").map(|p| p.to_owned()).collect())
 }
 
 pub fn routes() -> Routes {
     Routes::new()
-        .prefix("needs/")
-        .add("/{path}", get(render_home))
+        .prefix("app/")
+        .add("/{*paths}", get(render_home))
 }

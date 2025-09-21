@@ -11,15 +11,16 @@ Your Needs
 {% block content %}
 <div class="content">
     <nav hx-ext="submitjson">
-        <a href="/needs/components/login" hx-push-url="/needs/login" hx-boost="true" hx-target="#main"
+        <a href="/needs/components/login" hx-push-url="/app/login" hx-boost="true" hx-target="#main"
             id="login-link">login</a>
-        <a href="/needs/components/list" hx-push-url="/needs/list" hx-boost="true" hx-target="#main" id="list-link">list
+        <a href="/needs/components/list" hx-push-url="/app/needs/list" hx-boost="true" hx-target="#main"
+            id="list-link">your
             needs</a>
-        <a href="/feelings/components/list" hx-push-url="/feelings/list" hx-boost="true" hx-target="#main"
-            id="list-link">list
+        <a href="/feelings/components/list" hx-push-url="/app/feelings/list" hx-boost="true" hx-target="#main"
+            id="list-link">your
             feelings</a>
     </nav>
-    <main id="main" hx-get="/needs/components/{{ path }}" hx-trigger="load" hx-ext="submitjson">
+    <main id="main" hx-get="/{{ component_path }}" hx-trigger="load" hx-ext="submitjson">
 
     </main>
 </div>
