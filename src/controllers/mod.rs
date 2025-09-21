@@ -9,6 +9,7 @@ use loco_rs::prelude::*;
 use tokio_util::io::ReaderStream;
 
 pub mod app;
+pub mod app_components;
 pub mod auth;
 pub mod feeling;
 pub mod feeling_components;

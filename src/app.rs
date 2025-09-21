@@ -55,6 +55,7 @@ impl Hooks for App {
             .add_route(controllers::feeling::routes())
             .add_route(controllers::invite::routes())
             .add_route(controllers::app::routes())
+            .add_route(controllers::app_components::routes())
             .add_route(controllers::need_components::routes())
             .add_route(controllers::feeling_components::routes())
             .add_route(controllers::auth::routes())

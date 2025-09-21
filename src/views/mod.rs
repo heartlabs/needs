@@ -18,7 +18,7 @@ pub fn app(v: impl ViewRenderer, paths: Vec<String>) -> Result<impl IntoResponse
     let component_path = if let Some(path2) = paths.get(1) {
         path1.to_owned() + "/components/" + path2
     } else {
-        path1.to_owned()
+        "app_components/".to_owned() + path1
     };
 
     let history_path = format!("app/{}", history_path);
@@ -32,4 +32,8 @@ pub fn app(v: impl ViewRenderer, paths: Vec<String>) -> Result<impl IntoResponse
         "home/hello.html",
         data!({ "history_path" : history_path, "component_path" : component_path }),
     )
+}
+
+pub fn login(v: &impl ViewRenderer) -> Result<Response> {
+    format::render().view(v, "home/login.html", data!({}))
 }

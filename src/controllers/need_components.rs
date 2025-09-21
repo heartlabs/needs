@@ -107,11 +107,6 @@ pub async fn show(
 }
 
 #[debug_handler]
-pub async fn login(ViewEngine(v): ViewEngine<TeraView>) -> Result<Response> {
-    views::need::login(&v)
-}
-
-#[debug_handler]
 pub async fn remove(
     Path(id): Path<i32>,
     State(ctx): State<AppContext>,
@@ -125,7 +120,6 @@ pub fn routes() -> Routes {
     Routes::new()
         .prefix("needs/components/")
         .add("/list", get(list))
-        .add("/login", get(login))
         .add("new", post(new))
         .add("{id}", get(show))
         .add("{id}/edit", get(edit))
