@@ -6,7 +6,7 @@
   "orientation": "any",
   "scope": "/",
   "short_name": "yourneeds",
-  "start_url": "/needs/list",
+  "start_url": "app/needs/list",
   "theme_color": "#ffffff",
   "icons": [
     {
