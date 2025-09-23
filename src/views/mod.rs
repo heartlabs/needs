@@ -30,7 +30,7 @@ pub fn app(v: impl ViewRenderer, paths: Vec<String>) -> Result<impl IntoResponse
     format::render().view(
         &v,
         "home/hello.html",
-        data!({ "history_path" : history_path, "component_path" : component_path }),
+        data!({ "history_path" : history_path, "component_path" : component_path, "app_version" : crate::APP_VERSION }),
     )
 }
 
