@@ -7,7 +7,7 @@ use tracing::info;
 
 pub fn app(v: impl ViewRenderer, paths: Vec<String>) -> Result<impl IntoResponse> {
     let default = "".to_string();
-    let path1 = paths.get(0).unwrap_or(&default);
+    let path1 = paths.first().unwrap_or(&default);
 
     let history_path = if let Some(path2) = paths.get(1) {
         path1.to_owned() + "/" + path2
