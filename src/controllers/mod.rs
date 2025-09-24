@@ -1,11 +1,13 @@
 use std::{fs, path::PathBuf};
 
+use crate::APP_VERSION;
 use axum::{
     body::Body,
     debug_handler,
     http::{header, HeaderMap},
 };
 use loco_rs::prelude::*;
+use tokio_stream::StreamExt;
 use tokio_util::io::ReaderStream;
 
 pub mod app;
@@ -32,8 +34,12 @@ pub async fn service_worker() -> Result<impl IntoResponse> {
         "text/javascript; charset=utf-8".parse().unwrap(),
     );
 
-    let stream = ReaderStream::new(file);
-    let body = Body::from_stream(stream);
+    let app_version_stream = ReaderStream::new("const APP_VERSION = '".as_bytes())
+        .chain(ReaderStream::new(APP_VERSION.as_bytes()))
+        .chain(ReaderStream::new("'\n".as_bytes()));
+
+    let file_stream = ReaderStream::new(file);
+    let body = Body::from_stream(app_version_stream.chain(file_stream));
 
     Ok((headers, body))
 }
