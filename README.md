@@ -36,6 +36,7 @@ docker compose up -d
 * list of needs at http://localhost:5150/needs
 * create, edit, update and delete needs
 * using htmx
+* Feelings
 * authentication
   * you always work with your own user id
   * login page
@@ -48,7 +49,6 @@ docker compose up -d
   * progressive webapp
 * future fancy features
   * Nicer login page
-  * Feelings
   * see other users' needs
   * show when last updated
   * user creation interface
