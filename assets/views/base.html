@@ -75,7 +75,7 @@
                 return JSON.stringify(json);
             }
         })
-        function confirmDelete(event, delete_url, need_id) {
+        function confirmDelete(event, delete_url, element_selector) {
             event.preventDefault();
 
             let user_apikey = window.localStorage.getItem("USER_APIKEY")
@@ -87,7 +87,7 @@
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
 
-                    htmx.remove(htmx.find("#need-" + need_id));
+                    htmx.remove(htmx.find(element_selector));
 
                 }
             };
