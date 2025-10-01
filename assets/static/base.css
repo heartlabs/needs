@@ -1,5 +1,7 @@
 body {
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0;
+    padding: 0;
 }
 
 main {
@@ -32,7 +34,6 @@ nav a:hover {
 .content {
     display: flex;
     flex-direction: column;
-    margin: 10px;
 }
 
 /***** Sliders ******/
@@ -126,7 +127,7 @@ input[type='range']::-webkit-slider-thumb:hover {
 
 .needs-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     grid-auto-rows: 1fr;
 }
 
