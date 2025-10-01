@@ -43,14 +43,14 @@ input[type=range] {
     accent-color: green;
     overflow: hidden;
     width: 129px;
-    height: 20px;
+    height: 40px;
     appearance: none;
     background-color: yellow;
     margin: auto;
     display: block;
     border-radius: 15px;
     transform: rotate(90deg);
-    transform-origin: 8% 50%;
+    transform-origin: 13% 33%;
 
 }
 
@@ -61,7 +61,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 input[type='range']::-webkit-slider-thumb {
     width: 20px;
     -webkit-appearance: none;
-    height: 20px;
+    height: 40px;
     cursor: ns-resize;
     background: #791a71;
     box-shadow: 0px -30px 40px 60px #ffcc00, 60px -30px 0 60px #06ff3c;
@@ -186,5 +186,20 @@ label {
 
     .new-need-button {
         flex-grow: initial;
+    }
+
+
+}
+
+@media not all and (pointer: coarse) {
+
+    /* For no-touch-screen devices (i.e. desktop) */
+    input[type=range] {
+        height: 20px;
+        transform-origin: 8% 50%;
+    }
+
+    input[type='range']::-webkit-slider-thumb {
+        height: 20px;
     }
 }
