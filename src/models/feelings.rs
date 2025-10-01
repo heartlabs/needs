@@ -1,5 +1,5 @@
+pub use super::_entities::feelings::{ActiveModel, Entity, Model};
 use sea_orm::entity::prelude::*;
-pub use super::_entities::feelings::{ActiveModel, Model, Entity};
 pub type Feelings = Entity;
 
 #[async_trait::async_trait]
