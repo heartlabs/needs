@@ -191,7 +191,7 @@ label {
 
 }
 
-@media not all and (pointer: coarse) {
+@media (pointer: fine) {
 
     /* For no-touch-screen devices (i.e. desktop) */
     input[type=range] {
